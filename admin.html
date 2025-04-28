@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - Church Group</title>
+  <link rel="stylesheet" href="styles/admin.css">
+</head>
+<body>
+
+<nav>
+  <a href="index.html">Calendar</a>
+  <a href="admin.html">Admin Panel</a>
+</nav>
+
+<h1>✨ Admin Panel - Church Group ✨</h1>
+
+<div id="adminForm">
+  <h2>Add New Announcement</h2>
+  <input type="date" id="eventDate">
+  <input type="text" id="newAnnouncement" placeholder="Write new announcement...">
+  <button onclick="addAnnouncement()">Add Announcement</button>
+</div>
+
+<script>
+  // Load announcements from localStorage or start empty
+  let announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+
+  function addAnnouncement() {
+    const dateInput = document.getElementById('eventDate');
+    const textInput = document.getElementById('newAnnouncement');
+    const date = dateInput.value;
+    const text = textInput.value.trim();
+
+    if (date && text) {
+      announcements.push({ date, text });
+      localStorage.setItem('announcements', JSON.stringify(announcements));
+      dateInput.value = '';
+      textInput.value = '';
+      alert('Announcement added!');
+    } else {
+      alert('Please select a date and enter an announcement.');
+    }
+  }
+</script>
+
+</body>
+</html>
