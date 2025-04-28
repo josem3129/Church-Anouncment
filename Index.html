@@ -14,62 +14,15 @@
 </nav>
 <!-- Print Button -->
 <button onclick="window.print()">Print Calendar</button>
-<h1>✨ Church Group Calendar ✨</h1>
+<h1>✨ Barrio 14 de Nampa ✨</h1>
+<div id="calendar-controls">
+    <button onclick="changeMonth(-1)">Previous Month</button>
+    <button onclick="changeMonth(-1)">Next Month</button>
+</div>
 <div id="monthName"></div>
 <div id="calendar"></div>
 
-<script>
-  // Load announcements from localStorage or use default sample
-  let announcements = JSON.parse(localStorage.getItem('announcements')) || [
-    { date: '2025-04-28', text: 'Sunday service at 10am' },
-    { date: '2025-05-02', text: 'Youth group meeting on Friday at 6pm' },
-    { date: '2025-05-01', text: 'Bible study on Wednesday evening' }
-  ];
-
-  function getDaysInMonth(year, month) {
-    return new Date(year, month + 1, 0).getDate();
-  }
-
-  function renderCalendar() {
-    const calendar = document.getElementById('calendar');
-    const monthNameDiv = document.getElementById('monthName');
-    calendar.innerHTML = '';
-
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = today.getMonth();
-    const daysInMonth = getDaysInMonth(year, month);
-
-    const monthNames = [
-      'January', 'February', 'March', 'April', 'May', 'June',
-      'July', 'August', 'September', 'October', 'November', 'December'
-    ];
-    monthNameDiv.textContent = `${monthNames[month]} ${year}`;
-
-    for (let day = 1; day <= daysInMonth; day++) {
-      const dayDiv = document.createElement('div');
-      dayDiv.className = 'day';
-
-      const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
-      dayDiv.innerHTML = `<div class="day-number">${day}</div>`;
-
-      announcements.forEach(event => {
-        if (event.date === dateStr) {
-          const eventDiv = document.createElement('div');
-          eventDiv.className = 'event';
-          eventDiv.textContent = event.text;
-          dayDiv.appendChild(eventDiv);
-        }
-      });
-
-      calendar.appendChild(dayDiv);
-    }
-  }
-
-  // Initial render
-  renderCalendar();
-</script>
+<script src="JS/calendar.js"></script>
 
 </body>
 </html>
