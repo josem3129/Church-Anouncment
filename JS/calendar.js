@@ -1,6 +1,7 @@
 const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 let currentYear = new Date().getFullYear();
 let currentMonth = new Date().getMonth();
+let announcements = [];
 
 function renderDaysOfWeek() {
   const calendar = document.getElementById('calendar');
@@ -14,13 +15,11 @@ function renderDaysOfWeek() {
   });
 }
 
-
-
-let announcements = JSON.parse(localStorage.getItem('announcements')) || [
-  { date: '2025-04-28', text: 'Sunday service at 10am' },
-  { date: '2025-05-02', text: 'Youth group meeting on Friday at 6pm' },
-  { date: '2025-05-01', text: 'Bible study on Wednesday evening' }
-];
+// let announcements = JSON.parse(localStorage.getItem('announcements')) || [
+//   { date: '2025-04-28', text: 'Sunday service at 10am' },
+//   { date: '2025-05-02', text: 'Youth group meeting on Friday at 6pm' },
+//   { date: '2025-05-01', text: 'Bible study on Wednesday evening' }
+// ];
 
 function getDaysInMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
@@ -86,5 +85,26 @@ function changeMonth(direction) {
   renderCalendar();
 }
 
-// Initial render
-renderCalendar();
+async function renderCalendarWithFirebase() {
+  announcements = await fetchAnnouncements();
+  renderCalendar();
+}
+
+// TEST: Check Firebase connection
+async function testFirebaseConnection() {
+  try {
+    const snapshot = await db.collection('announcements').get();
+    console.log("✅ Firebase connected! Announcements:");
+    snapshot.forEach(doc => {
+      console.log(doc.id, doc.data());
+    });
+  } catch (err) {
+    console.error("❌ Firebase connection failed:", err);
+  }
+}
+
+// Run the test
+testFirebaseConnection();
+
+// Call it instead of renderCalendar directly
+renderCalendarWithFirebase();

@@ -22,27 +22,7 @@
   <button onclick="addAnnouncement()">Add Announcement</button>
 </div>
 
-<script>
-  // Load announcements from localStorage or start empty
-  let announcements = JSON.parse(localStorage.getItem('announcements')) || [];
-
-  function addAnnouncement() {
-    const dateInput = document.getElementById('eventDate');
-    const textInput = document.getElementById('newAnnouncement');
-    const date = dateInput.value;
-    const text = textInput.value.trim();
-
-    if (date && text) {
-      announcements.push({ date, text });
-      localStorage.setItem('announcements', JSON.stringify(announcements));
-      dateInput.value = '';
-      textInput.value = '';
-      alert('Announcement added!');
-    } else {
-      alert('Please select a date and enter an announcement.');
-    }
-  }
-</script>
+<script type="module" src="JS/admin.js"></script>
 
 </body>
 </html>
