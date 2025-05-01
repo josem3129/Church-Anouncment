@@ -1,0 +1,19 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "church anouncment ",
+  "main": "index.js",
+  "scripts": {
+    "test": "pnpm run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/josem3129/Church-Anouncment.git"
+  },
+  "author": "jose martinez Cabrera",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/josem3129/Church-Anouncment/issues"
+  },
+  "homepage": "https://github.com/josem3129/Church-Anouncment#readme"
+}
