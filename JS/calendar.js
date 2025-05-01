@@ -102,7 +102,26 @@ async function testFirebaseConnection() {
     console.error("❌ Firebase connection failed:", err);
   }
 }
+async function submitUserAnnouncement() {
+  const date = document.getElementById("userEventDate").value;
+  const text = document.getElementById("userAnnouncement").value.trim();
 
+  if (!date || !text) {
+    alert("Please enter both a date and announcement.");
+    return;
+  }
+
+  try {
+    await db.collection("announcements").add({ date, text });
+    alert("Announcement added!");
+    document.getElementById("userEventDate").value = "";
+    document.getElementById("userAnnouncement").value = "";
+    renderCalendarWithFirebase(); // refresh calendar
+  } catch (error) {
+    console.error("Error adding announcement:", error);
+    alert("Failed to add announcement.");
+  }
+}
 // Run the test
 testFirebaseConnection();
 

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Church Group Calendar</title>
   <link rel="stylesheet" href="styles/styles.css">
 </head>
@@ -12,19 +12,31 @@
   <a href="index.html">Calendar</a>
   <a href="admin.html">Admin Panel</a>
 </nav>
+
 <!-- Print Button -->
 <button onclick="window.print()">Print Calendar</button>
+
 <h1>✨ Barrio 14 de Nampa ✨</h1>
-<div id="calendar-controls">
-    <button onclick="changeMonth(-1)">Previous Month</button>
-    <button onclick="changeMonth(1)">Next Month</button>
+
+<!-- Add Announcement Form -->
+<div id="userForm">
+  <h2>Add an Announcement</h2>
+  <input type="date" id="userEventDate">
+  <input type="text" id="userAnnouncement" placeholder="Write your announcement...">
+  <button onclick="submitUserAnnouncement()">Submit</button>
 </div>
+
+<div id="calendar-controls">
+  <button onclick="changeMonth(-1)">Previous Month</button>
+  <button onclick="changeMonth(1)">Next Month</button>
+</div>
+
 <div id="monthName"></div>
 <div id="calendar"></div>
 
 <!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js" defer></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js" defer></script>
 
 <!-- Firebase config -->
 <script src="JS/firebase-config.js" defer></script>
