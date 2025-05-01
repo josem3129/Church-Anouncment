@@ -18,7 +18,7 @@ function signInWithGoogle() {
     const loginSection = document.getElementById("loginSection");
     const adminPanel = document.getElementById("adminPanel");
   
-    if (user && user.email === "josem3129@gmail.com") {
+    if (user && user.email === "josem3129@gmail.com") { // UPDATE THIS EMAIL
       loginSection.style.display = "none";
       adminPanel.style.display = "block";
       loadAnnouncements();
