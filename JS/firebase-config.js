@@ -13,7 +13,9 @@ async function fetchAnnouncements() {
   return snapshot.docs.map(doc => doc.data());
 }
 
-// Add a new announcement to Firestore
+// Add a new announcement to Firestore, including user ID
 async function addAnnouncementToFirestore(date, text) {
-  return db.collection("announcements").add({ date, text });
+  const user = firebase.auth().currentUser;
+  const userId = user ? user.uid : null;
+  return db.collection("announcements").add({ date, text, userId });
 }
