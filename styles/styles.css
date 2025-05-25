@@ -85,6 +85,44 @@ body {
   #calendar-controls button:hover {
     background-color: #1a252f;
   }  
+  #userForm {
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+  }
+  #userEventDate {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  #submitAnnouncementBtn {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    max-width: 25%;
+    margin-top: 10px;
+  }
+  #userAnnouncement {
+    /* margin-top: 20px; */
+    max-width: 400px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    /* background-color: #f9f9f9; */
+    height: 125px;
+    overflow-y: auto;
+  }
   
   /* Responsive Design for Tablet & Mobile */
   @media (max-width: 768px) {
@@ -94,9 +132,9 @@ body {
     }
   
     .day {
-      width: 100%;
       border-bottom: 1px solid #ccc;
       padding: 10px;
+      position: relative;
     }
   
     .day-number {
@@ -110,6 +148,9 @@ body {
       border-radius: 3px;
       margin-top: 5px;
       font-size: 0.95em;
+    }
+    .day-name{
+      display: none; /* Hide day names for printing */
     }
   }
   @media print {
@@ -147,5 +188,6 @@ body {
       border-radius: 3px;
       margin-top: 5px;
     }
+    
   }
   

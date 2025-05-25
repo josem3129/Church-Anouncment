@@ -45,7 +45,7 @@ function renderCalendar() {
   // Add blank spaces before 1st
   for (let i = 0; i < firstDay; i++) {
     const emptyDiv = document.createElement('div');
-    emptyDiv.className = 'day empty';
+    emptyDiv.className = 'day-empty';
     calendar.appendChild(emptyDiv);
   }
 
