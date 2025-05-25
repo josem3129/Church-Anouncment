@@ -7,10 +7,10 @@
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-
-<nav>
-  <a href="index.html">Calendar</a>
-  <a href="admin.html">Admin Panel</a>
+  
+  <nav>
+    <a href="index.html">Calendar</a>
+    <!-- <a href="admin.html">Admin Panel</a> -->
 </nav>
 
 <!-- Print Button -->
@@ -33,6 +33,7 @@
 
 <div id="monthName"></div>
 <div id="calendar"></div>
+
 <script>
   window.firebaseConfig = {
     apiKey: "AIzaSyDk87piSwr4UD-hq6ClYdsQxt7I6LLiks4",
@@ -55,8 +56,8 @@
 <!-- Calendar Logic -->
 <script src="JS/calendar.js" defer></script>
 
-<!-- Auth for Calendar -->
-<script src="JS/auth-calendar.js" defer></script>
+<script src="JS/auth-redirect.js" defer></script>
+<script src="JS/signout.js" defer></script>
 
 
 </body>

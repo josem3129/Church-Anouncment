@@ -1,0 +1,11 @@
+{
+  "name": "church-calendar",
+  "version": "1.0.0",
+  "description": "Firebase hosted church calendar",
+  "scripts": {
+    "start": "firebase serve",
+    "deploy": "firebase deploy"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Google Registration</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+<h1>Welcome! Complete Your Registration</h1>
+
+<section id="googleProfileSection">
+  <form id="googleRegisterForm">
+    <input type="text" id="firstName" placeholder="First Name" required>
+    <input type="text" id="lastName" placeholder="Last Name" required>
+    <select id="organization" required>
+      <option value="">Select Organization</option>
+      <option value="Elder Quorum">Elder Quorum</option>
+      <option value="Relief Society">Relief Society</option>
+      <option value="Primary">Primary</option>
+      <option value="Sunday School">Sunday School</option>
+      <option value="Missionary Work">Missionary Work</option>
+      <option value="Family History">Family History</option>
+    </select>
+    <button type="submit">Finish Registration</button>
+  </form>
+</section>
+<!-- Firebase SDKs -->
+<script>
+  window.firebaseConfig = {
+    apiKey: "AIzaSyDk87piSwr4UD-hq6ClYdsQxt7I6LLiks4",
+    authDomain: "church-calendar-barrio-14.firebaseapp.com",
+    projectId: "church-calendar-barrio-14",
+    storageBucket: "church-calendar-barrio-14.firebasestorage.app",
+    messagingSenderId: "262098687337",
+    appId: "1:262098687337:web:2aea00eff8ef7decea99f8"
+  };
+</script>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<script src="JS/firebase-config.js"></script>
+<script src="JS/google-register.js"></script>
+
+</body>
+</html>

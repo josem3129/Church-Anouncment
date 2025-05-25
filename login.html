@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+<h1>Login to Barrio 14 Calendar</h1>
+
+<!-- Login Form (Email/Password) -->
+<section id="loginSection">
+  <h2>Email Login</h2>
+  <form id="loginForm">
+    <input type="email" id="email" placeholder="Email" required>
+    <input type="password" id="password" placeholder="Password" required autocomplete="current-password">
+    <button type="submit">Login</button>
+  </form>
+  <p>Don’t have an account? <a href="register.html">Register here</a></p>
+</section>
+
+<!-- Google Sign-In -->
+<section id="googleLoginSection">
+  <h2>Or Sign in with Google</h2>
+  <button id="googleSignInBtn">Sign in with Google</button>
+</section>
+
+<!-- Firebase SDKs -->
+<script>
+  window.firebaseConfig = {
+    apiKey: "AIzaSyDk87piSwr4UD-hq6ClYdsQxt7I6LLiks4",
+    authDomain: "church-calendar-barrio-14.firebaseapp.com",
+    projectId: "church-calendar-barrio-14",
+    storageBucket: "church-calendar-barrio-14.firebasestorage.app",
+    messagingSenderId: "262098687337",
+    appId: "1:262098687337:web:2aea00eff8ef7decea99f8"
+  };
+</script>
+
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js"></script>
+<script src="JS/firebase-config.js"></script>
+<script src="JS/login.js"></script>
+
+</body>
+</html>
