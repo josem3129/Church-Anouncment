@@ -72,7 +72,7 @@ a:hover {
   text-decoration: underline;
 }
 #googleSignInBtn {
-  background: #4285f4;
+  /* background: #4285f4; */
   color: white;
   border: none;
   padding: 0.8rem;
