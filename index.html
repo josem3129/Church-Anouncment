@@ -1,64 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Church Group Calendar</title>
   <link rel="stylesheet" href="styles/styles.css">
 </head>
+
 <body>
-  
+
   <nav>
     <a href="index.html">Calendar</a>
     <!-- <a href="admin.html">Admin Panel</a> -->
-</nav>
+  </nav>
 
-<!-- Print Button -->
-<button onclick="window.print()">Print Calendar</button>
+  <!-- Print Button -->
+  <button onclick="window.print()">Print Calendar</button>
 
-<h1>Barrio 14 de Nampa</h1>
+  <h1>Barrio 14 de Nampa</h1>
 
-<!-- Add Announcement Form -->
-<div id="userForm">
-  <h2>Add an Announcement</h2>
-  <input type="date" id="userEventDate">
-  <input type="text" id="userAnnouncement" placeholder="Write your announcement...">
-  <button id="submitAnnouncementBtn" onclick="submitUserAnnouncement()">Submit</button>
-</div>
+  <!-- Add Announcement Form -->
+  <div id="userForm">
+    <input type="date" id="userEventDate" required>
+    <label for="userStartTime">Start Time</label>
+    <input type="time" id="userStartTime" required>
+    <label for="userEndTime">End Time</label>
+    <input type="time" id="userEndTime" required>
 
-<div id="calendar-controls">
-  <button onclick="changeMonth(-1)">Previous Month</button>
-  <button onclick="changeMonth(1)">Next Month</button>
-</div>
+    <input type="text" id="userAnnouncement" placeholder="Write your announcement..." required>
 
-<div id="monthName"></div>
-<div id="calendar"></div>
+    <button id="submitAnnouncementBtn" onclick="submitUserAnnouncement()">Submit</button>
+  </div>
 
-<script>
-  window.firebaseConfig = {
-    apiKey: "AIzaSyDk87piSwr4UD-hq6ClYdsQxt7I6LLiks4",
-    authDomain: "church-calendar-barrio-14.firebaseapp.com",
-    projectId: "church-calendar-barrio-14",
-    storageBucket: "church-calendar-barrio-14.firebasestorage.app",
-    messagingSenderId: "262098687337",
-    appId: "1:262098687337:web:2aea00eff8ef7decea99f8"
-  };
-</script>
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js" defer></script>
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js" defer></script> <!-- ✅ Add this -->
-<script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js" defer></script>
+  <div id="calendar-controls">
+    <button onclick="changeMonth(-1)">Previous Month</button>
+    <button onclick="changeMonth(1)">Next Month</button>
+  </div>
+
+  <div id="monthName"></div>
+  <div id="calendar"></div>
+
+  <script>
+    window.firebaseConfig = {
+      apiKey: "AIzaSyDk87piSwr4UD-hq6ClYdsQxt7I6LLiks4",
+      authDomain: "church-calendar-barrio-14.firebaseapp.com",
+      projectId: "church-calendar-barrio-14",
+      storageBucket: "church-calendar-barrio-14.firebasestorage.app",
+      messagingSenderId: "262098687337",
+      appId: "1:262098687337:web:2aea00eff8ef7decea99f8"
+    };
+  </script>
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-app-compat.js" defer></script>
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-auth-compat.js" defer></script> <!-- ✅ Add this -->
+  <script src="https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore-compat.js" defer></script>
 
 
-<!-- Firebase Config -->
-<script src="JS/firebase-config.js" defer></script>
+  <!-- Firebase Config -->
+  <script src="JS/firebase-config.js" defer></script>
 
-<!-- Calendar Logic -->
-<script src="JS/calendar.js" defer></script>
+  <!-- Calendar Logic -->
+  <script src="JS/calendar.js" defer></script>
 
-<script src="JS/auth-redirect.js" defer></script>
-<script src="JS/signout.js" defer></script>
+  <script src="JS/auth-redirect.js" defer></script>
+  <script src="JS/signout.js" defer></script>
 
 
 </body>
+
 </html>

@@ -15,11 +15,6 @@ function renderDaysOfWeek() {
   });
 }
 
-// let announcements = JSON.parse(localStorage.getItem('announcements')) || [
-//   { date: '2025-04-28', text: 'Sunday service at 10am' },
-//   { date: '2025-05-02', text: 'Youth group meeting on Friday at 6pm' },
-//   { date: '2025-05-01', text: 'Bible study on Wednesday evening' }
-// ];
 
 function getDaysInMonth(year, month) {
   return new Date(year, month + 1, 0).getDate();
@@ -55,14 +50,18 @@ function renderCalendar() {
     dayDiv.className = 'day';
 
     const dateStr = `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-
     dayDiv.innerHTML = `<div class="day-number">${day}</div>`;
 
     announcements.forEach(event => {
       if (event.date === dateStr) {
         const eventDiv = document.createElement('div');
         eventDiv.className = 'event';
-        eventDiv.textContent = event.text;
+
+        const timeText = event.startTime && event.endTime
+          ? `${event.startTime} – ${event.endTime}: `
+          : '';
+
+        eventDiv.textContent = timeText + event.text;
         dayDiv.appendChild(eventDiv);
       }
     });
@@ -70,6 +69,7 @@ function renderCalendar() {
     calendar.appendChild(dayDiv);
   }
 }
+
 
 function changeMonth(direction) {
   currentMonth += direction;
@@ -104,24 +104,41 @@ async function testFirebaseConnection() {
 }
 async function submitUserAnnouncement() {
   const date = document.getElementById("userEventDate").value;
+  const startTime = document.getElementById("userStartTime").value;
+  const endTime = document.getElementById("userEndTime").value;
   const text = document.getElementById("userAnnouncement").value.trim();
 
-  if (!date || !text) {
-    alert("Please enter both a date and announcement.");
+  if (!date || !startTime || !endTime || !text) {
+    alert("Please fill in all fields.");
+    return;
+  }
+
+  if (endTime <= startTime) {
+    alert("End time must be after start time.");
     return;
   }
 
   try {
-    await db.collection("announcements").add({ date, text });
+    await addAnnouncementToFirestore(date, startTime, endTime, text);
     alert("Announcement added!");
+
+    // Clear form
     document.getElementById("userEventDate").value = "";
+    document.getElementById("userStartTime").value = "";
+    document.getElementById("userEndTime").value = "";
     document.getElementById("userAnnouncement").value = "";
-    renderCalendarWithFirebase(); // refresh calendar
+
+    if (typeof renderCalendarWithFirebase === "function") {
+      renderCalendarWithFirebase();
+    }
+
   } catch (error) {
     console.error("Error adding announcement:", error);
-    alert("Failed to add announcement.");
+    alert(error.message);
   }
 }
+
+
 // Run the test
 testFirebaseConnection();
 
